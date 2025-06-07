@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buddy - Pawsitive Match</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+
+        <div class="nav-container">
+            <div class="dropdown">
+                <i class="ri-menu-line"></i>
+                <div class="dropdown-content">
+                  <a href="#">Find a Pet</a>
+                  <a href="#">Search</a>
+                  <a href="#">About Us</a>
+                </div>
+              </div>
+            <div class="logo"><i class="ri-function-add-fill"></i>
+                <p>Pawsitive Match</p>
+            </div>
+            <nav>
+                <a href="#">Find a Pet</a>
+                <a href="#">About Us</a>
+            </nav>
+            <div class="user-actions">
+                <input type="text" class="search" placeholder="Search">
+                <img src="imagesprofile.jpg" class="pro-image">
+                <button>Post Pet</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pet-profile">
+        <div class="breadcrumb">Find a Pet / <strong>Buddy</strong></div>
+        <img src="golden.jpg" alt="Buddy" class="pet-image">
+
+        <section class="pet-details">
+            <h2>Buddy</h2>
+            <div class="info-grid">
+                <div class="line_top"> Age: <strong>years</strong> </div>
+                <div class="line_top">Gender:<strong>Male</strong></div>
+                <div class="line_top">Breed:<strong>Golden Retriever</strong></div>
+                <div class="line_top">Size:<strong>Large</strong></div>
+                <div class="line_top">Vaccination Status:<strong>Up to date</strong></div>
+            </div>
+        </section>
+
+        <section class="about">
+            <h3>About Buddy</h3>
+            <p>Buddy is a friendly and energetic Golden Retriever looking for a loving home. He enjoys playing fetch,
+                going for walks, and cuddling with his humans. Buddy is well-trained and gets along well with children
+                and other dogs. He is up-to-date on all vaccinations and ready to join your family.</p>
+        </section>
+
+        <section class="contact-form">
+            <h3>Contact Shelter</h3>
+            <div class="Contact_Grid">
+                <form action="contact.php" method="POST">
+                    <p>Your Name</p>
+                    <input class="input_Contact" type="text" name="name" placeholder="Enter your name" required>
+                    <p>Your Email</p>
+                    <input class="input_Contact" type="email" name="email" placeholder="Enter your email" required>
+                    <p>Message</p>
+                    <textarea class="input_Massage" name="message" placeholder="" required></textarea>
+                    <button type="submit" class="Contact">Send</button>
+                </form>
+                <div class="shelter-info">
+                    <p>Contact Number<strong>94 78 12 13 459</strong></p>
+                    <p>Location<strong>Kurunegala</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="Footer_logo"><i class="ri-function-add-fill"></i>
+            <p>Pawsitive Match</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">Find Pet</a>
+            <a href="#">Contact</a>
+            <a href="#">About Us</a>
+        </div>
+        <p>©2025 Pawsitive Match. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="sign_up_style.css" />
+  <script defer src="Sign_up_js.js"></script>
+  <style>
+    #message-box {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Manrope', sans-serif;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: opacity 0.4s ease;
+    }
+    #message-box.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 2px solid #c3e6cb;
+    }
+    #message-box.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 2px solid #f5c6cb;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="message-box" style="display:none;"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div id="menuToggle" aria-label="Toggle navigation" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="logo-section">
+      <img src="images/logoimage.png" alt="Logo" class="logo-icon" />
+      <span class="logo-text">Pawsitive Match</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#featured-pets">Find a Pet</a>
+      <a href="#about-us">About Us</a>
+    </nav>
+    <div class="search-user">
+      <input type="text" class="search-input" placeholder="Search" />
+      <div class="user-avatar">
+        <img src="images/image.png" alt="User" />
+      </div>
+      <button class="post-pet-btn">Post Pet</button>
+    </div>
+  </header>
+
+  <!-- Main Page -->
+  <main class="main-container">
+    <section class="form-section">
+      <h1 class="form-title">Create your account</h1>
+      <form class="account-form" id="signupForm" method="POST" enctype="multipart/form-data">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password" placeholder="Enter password" required />
+          <span class="toggle-password" data-target="password">👁️</span>
+        </div>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required />
+          <span class="toggle-password" data-target="confirmPassword">👁️</span>
+        </div>
+
+        <!-- New profile image upload field -->
+        <label for="profile_image">Profile Image</label>
+        <input type="file" id="profile_image" name="profile_image" accept="image/*" required />
+
+        <button type="submit" class="sign-in-btn">Sign in</button>
+      </form>
+      <p class="signin-link">Already have an account? <a href="sign_in.html">Sign in</a></p>
+    </section>
+
+    <section class="image-section">
+      <img src="images/sideimage.png" alt="Side Visual" />
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="images/logoimage2.png" alt="Pawsitive Match Logo" class="footer-logo" />
+        <span class="footer-brand-name">Pawsitive Match</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Find Pet</a>
+        <a href="#">Contact</a>
+        <a href="#">About Us</a>
+      </div>
+      <p class="footer-copy">©2025 Pawsitive Match. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const profileImage = document.getElementById('profile_image').files[0];
+      const messageBox = document.getElementById('message-box');
+
+      messageBox.style.display = 'none';
+      clearTimeout(window._msgTimeout);
+
+      if (password !== confirmPassword) {
+        showMessage('Passwords do not match.', 'error');
+        return;
+      }
+
+      if (!profileImage) {
+        showMessage('Please upload a profile image.', 'error');
+        return;
+      }
+
+      const formData = new FormData(this);
+
+      fetch('signup.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          showMessage(data.success, 'success');
+          setTimeout(() => {
+            window.location.href = 'sign_in.html';
+          }, 1500); // Redirect after 1.5s
+        } else {
+          showMessage(data.error || "Something went wrong.", 'error');
+        }
+      })
+      .catch(() => {
+        showMessage("Error connecting to server.", 'error');
+      });
+
+      function showMessage(msg, type) {
+        messageBox.textContent = msg;
+        messageBox.className = type;
+        messageBox.classList.add('message-box', type);
+        messageBox.style.display = 'block';
+
+        if (type === 'error') {
+          window._msgTimeout = setTimeout(() => {
+            messageBox.style.display = 'none';
+            messageBox.textContent = '';
+          }, 1000); // Auto-hide error after 1s
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
