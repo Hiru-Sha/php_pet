@@ -6,38 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buddy - Pawsitive Match</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <header>
+<!-- Header -->
+<header class="header">
+  <!-- Hamburger button -->
+  <div id="menuToggle" aria-label="Toggle navigation" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-        <div class="nav-container">
-            <div class="dropdown">
-                <i class="ri-menu-line"></i>
-                <div class="dropdown-content">
-                  <a href="#">Find a Pet</a>
-                  <a href="#">Search</a>
-                  <a href="#">About Us</a>
-                </div>
-              </div>
-            <div class="logo"><i class="ri-function-add-fill"></i>
-                <p>Pawsitive Match</p>
-            </div>
-            <nav>
-                <a href="#">Find a Pet</a>
-                <a href="#">About Us</a>
-            </nav>
-            <div class="user-actions">
-                <input type="text" class="search" placeholder="Search">
-                <img src="imagesprofile.jpg" class="pro-image">
-                <button>Post Pet</button>
-            </div>
-        </div>
-    </header>
+  <div class="logo-section">
+    <img src="images/logoimage.png" alt="Logo" class="logo-icon" />
+    <span class="logo-text">Pawsitive Match</span>
+  </div>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="#featured-pets">Find a Pet</a>
+    <a href="#about-us">About Us</a>
+  </nav>
+
+  <div class="search-user">
+    <input type="text" class="search-input" placeholder="Search" />
+    <div class="user-avatar">
+      <img src="images/image.png" alt="User" />
+    </div>
+    <button class="post-pet-btn">Post Pet</button>
+  </div>
+</header>
+
 
     <main class="pet-profile">
         <div class="breadcrumb">Find a Pet / <strong>Buddy</strong></div>
@@ -81,17 +80,21 @@
         </section>
     </main>
 
-    <footer>
-        <div class="Footer_logo"><i class="ri-function-add-fill"></i>
-            <p>Pawsitive Match</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/logoimage2.png" alt="Pawsitive Match Logo" class="footer-logo" />
+                <span class="footer-brand-name">Pawsitive Match</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Find Pet</a>
+                <a href="#">Contact</a>
+                <a href="#">About Us</a>
+            </div>
+            <p class="footer-copy">©2025 Pawsitive Match. All rights reserved.</p>
         </div>
-        <div class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">Find Pet</a>
-            <a href="#">Contact</a>
-            <a href="#">About Us</a>
-        </div>
-        <p>©2025 Pawsitive Match. All rights reserved.</p>
     </footer>
 </body>
 
